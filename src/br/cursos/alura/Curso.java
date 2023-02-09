@@ -1,10 +1,7 @@
 package br.cursos.alura;
 // Aqui vamos trabalhar com relação de classe usando as coleções
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Curso {
     private String nome;
@@ -13,6 +10,11 @@ public class Curso {
     // na classe Curso vai conter quais aulas pertencem aquele curso
     // inicializando a lista de aulas vazia
     private List<Aula> aulas = new LinkedList<Aula>();
+    // vamos fazer um relacionamento entre a classe Curso com a classe Aluno
+    // na classe Curso e aonde vamos guardar todos os alunos matriculados
+    // inicializando a lista de aulas vazia
+    private Set<Aluno> alunos = new HashSet<>();
+
 
     public Curso(String nome, String instrutor) {
         this.nome = nome;
@@ -58,4 +60,17 @@ public class Curso {
     public String toString() {
         return "[Curso: " + nome + ", tempo total: " + this.getTempoTotal() + "," + " aulas: " + this.aulas + "]";
     }
+
+    // feito o relacionamento entre as classes Curso e Aluno agora temos acesso dos alunos do curso
+    // get de alunos para poder ter acesso dos alunos fora da classe
+    public Set<Aluno> getAlunos() {
+        // vamos usar a forma defensiva aonde não pode ser modificado por metodos que não esta na clase
+        return Collections.unmodifiableSet(alunos);
+    }
+
+    // metodo que vai ser responsavel por somente matricular os alunos
+    public void matricula(Aluno aluno) {
+        this.alunos.add(aluno);
+    }
+
 }

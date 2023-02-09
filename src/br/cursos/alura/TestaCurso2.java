@@ -31,7 +31,7 @@ public class TestaCurso2 {
         // vamos usar o metodo getTempoTotal que criamos para fazer a soma do tempo das aulas do curso
         System.out.println(javaColecoes.getTempoTotal());
 
-        // imprimindo utilizando o metodo de formatação toString
+        // vamos transformar o objeto em string, formatação toString na classe Curso
         System.out.println(javaColecoes);
 
 
