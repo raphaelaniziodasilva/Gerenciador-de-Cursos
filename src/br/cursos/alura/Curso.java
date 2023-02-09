@@ -43,4 +43,19 @@ public class Curso {
     public void adiciona(Aula aula) {
         this.aulas.add(aula);
     }
+
+    // somando o total de tempo das aulas do curso
+    public int getTempoTotal() {
+        int tempoTotal = 0;
+        for (Aula aula: aulas) {
+            tempoTotal += aula.getTempo();
+        }
+        return tempoTotal;
+    }
+
+    // imprimindo, transformando objeto em string, formatação toString
+    @Override
+    public String toString() {
+        return "[Curso: " + nome + ", tempo total: " + this.getTempoTotal() + "," + " aulas: " + this.aulas + "]";
+    }
 }

@@ -4,7 +4,7 @@ public class TestaCurso {
     public static void main(String[] args) {
         // criando curso
         Curso javaColecoes = new Curso("Dominando as coleções Java", "Paulo Silveira");
-        // adicionando uma nova aula dentro do curso, vamos usar o metodo adiciona que criamos
+        // adicionando aulas dentro do curso, vamos usar o metodo adiciona que criamos
         javaColecoes.adiciona(new Aula("Trabalhando com ArrayList", 20));
         javaColecoes.adiciona(new Aula("Utilizando estrutura de dados", 10));
         javaColecoes.adiciona(new Aula("Criando uma aula", 8));
