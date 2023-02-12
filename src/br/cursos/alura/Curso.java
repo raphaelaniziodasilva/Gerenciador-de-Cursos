@@ -73,4 +73,8 @@ public class Curso {
         this.alunos.add(aluno);
     }
 
+    // verificando se o aluno esta matriculado
+    public boolean estaMatriculado(Aluno aluno) {
+        return this.alunos.contains(aluno);
+    }
 }
