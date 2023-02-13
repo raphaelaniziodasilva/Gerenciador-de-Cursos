@@ -15,6 +15,13 @@ public class Curso {
     // inicializando a lista de aulas vazia
     private Set<Aluno> alunos = new HashSet<>();
 
+    // vamos verificar quem é o aluno que tem o determinado numero de matricula e usando o Map
+    // o Map vai mapear dado um numero inteiro um Aluno correspondente no mapa HashMap
+    // Map e HashMap são pocotes do java.util
+    // criamos o mapa HashMap vazio vamos matricular os alunos nesse mapa. Vamos para o metodo de matriculas
+
+    private Map<Integer, Aluno> matriculaParaAluno = new HashMap<>();
+
 
     public Curso(String nome, String instrutor) {
         this.nome = nome;
@@ -71,10 +78,44 @@ public class Curso {
     // metodo que vai ser responsavel por somente matricular os alunos
     public void matricula(Aluno aluno) {
         this.alunos.add(aluno);
+        // vamos matricular os alunos no mapa HashMap que esta vazio
+        // toda vez que alguém matricular um aluno além de adicionar vamos pegar o mapa
+        // que se chama matriculaParaAluno e vou colocar uma relação entre o número de matricula desse aluno com ele mesmo
+        this.matriculaParaAluno.put(aluno.getNumeroMatricula(), aluno);
+
+        // para usar precisamos ir no metodo buscaMatriculado e retornar matriculaParaAluno.get
     }
 
     // verificando se o aluno esta matriculado
     public boolean estaMatriculado(Aluno aluno) {
         return this.alunos.contains(aluno);
     }
+
+    //verificando quem é o aluno que tem o numero da matricula exemplo: 1210 usando o map
+    public Aluno buscaMatriculado(int numero) {
+        // verificando se o numero da matricula existe se não existir vai lançar um erro se existir passa direto e devolve um aluno
+        if(!matriculaParaAluno.containsKey(numero)) {
+            throw new NoSuchElementException("Matricula não encontrada");
+        }
+        // vai devolver o aluno que tem o numero da matricula
+        return matriculaParaAluno.get(numero);
+    }
+
+    /**
+     * primeira forma
+     * // verificando quem é o aluno que tem o numero da matricula exemplo: 1210
+     *     public Aluno buscaMatriculado(int numero) {
+     *         for (Aluno aluno: alunos) {
+     *             if(aluno.getNumeroMatricula() == numero) {
+     *                 return aluno;
+     *             }
+     *         }
+     *         throw new NoSuchElementException("Matricula não encontrada" + numero);
+     *     }
+     *
+     *     A segunda forma para verificar quem é o aluno que tem a tal matricula e usando o Map
+     *     para isso precisamos declarar o atributo Map no começo da classe
+     *
+     */
+
 }

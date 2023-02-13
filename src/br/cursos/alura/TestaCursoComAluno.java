@@ -43,11 +43,5 @@ public class TestaCursoComAluno {
 
         System.out.println("O aluno a1 é equals ao diego?");
         System.out.println(a1.equals(diego));
-
-
-
-
-
-
     }
 }
